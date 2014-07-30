@@ -6,3 +6,9 @@
 
 # R data files from past sessions
 .Rdata
+
+# R project files
+.Rproj.user
+
+# R profile
+.Rprofile
