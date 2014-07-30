@@ -16,6 +16,8 @@ devtools::install_github("rtype","renkun-ken")
 
 ## Getting started
 
+### Declaring symbols
+
 Declare symbols Before using them.
 
 
@@ -25,12 +27,15 @@ ls.str()
 ```
 
 ```
+df : 'data.frame':	10 obs. of  2 variables:
+ $ x: int  1 2 3 4 5 6 7 8 9 10
+ $ y: Factor w/ 10 levels "a","b","c","d",..: 1 2 3 4 5 6 7 8 9 10
 x :  NULL
 y :  num(0) 
 z :  logi(0) 
 ```
 
-Assign values with type checking
+### Assignment with type checking
 
 
 ```r
@@ -47,7 +52,7 @@ integer(y) <- c(1L,2L)
 ```
 
 ```
-Error: Symbol is not integer
+Error: symbol fails type checking with type
 ```
 
 ```r
@@ -57,8 +62,39 @@ logical(z) <- c(1,2,3)
 ```
 
 ```
-Error: Value is not logical
+Error: value fails type checking with type
 ```
+
+### Assignment with condition checking
+
+
+```r
+# assign value checking condition length = 3
+numeric(x, length = 3) <- c(1,2,3)
+
+# stop if condition is violated
+numeric(x, length = 3) <- c(1,2,3,4)
+```
+
+```
+Error: value [length = 4L] violates condition [length = 3]
+```
+
+```r
+# assign value checking multiple conditions
+declare(df)
+data.frame(df, ncol=2, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
+# or equivalently
+data.frame(df, dim=c(10,2)) <- data.frame(x=1:10,y=letters[1:10])
+
+# stop if any condition is violated
+data.frame(df, ncol=3, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
+```
+
+```
+Error: value [ncol = 2L] violates condition [ncol = 3]
+```
+
 
 ## Help overview
 

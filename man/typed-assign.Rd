@@ -29,57 +29,57 @@
 \alias{vector<-}
 \title{Assign with type checking}
 \usage{
-atomic(x) <- value
+atomic(x, ...) <- value
 
-integer(x) <- value
+integer(x, ...) <- value
 
-numeric(x) <- value
+numeric(x, ...) <- value
 
-double(x) <- value
+double(x, ...) <- value
 
-logical(x) <- value
+logical(x, ...) <- value
 
-character(x) <- value
+character(x, ...) <- value
 
-raw(x) <- value
+raw(x, ...) <- value
 
-complex(x) <- value
+complex(x, ...) <- value
 
-matrix(x) <- value
+matrix(x, ...) <- value
 
-array(x) <- value
+array(x, ...) <- value
 
-list(x) <- value
+list(x, ...) <- value
 
-pairlist(x) <- value
+pairlist(x, ...) <- value
 
-envir(x) <- value
+envir(x, ...) <- value
 
-name(x) <- value
+name(x, ...) <- value
 
-symbol(x) <- value
+symbol(x, ...) <- value
 
-call(x) <- value
+call(x, ...) <- value
 
-factor(x) <- value
+factor(x, ...) <- value
 
-fun(x) <- value
+fun(x, ...) <- value
 
-expression(x) <- value
+expression(x, ...) <- value
 
-language(x) <- value
+language(x, ...) <- value
 
-object(x) <- value
+object(x, ...) <- value
 
-table(x) <- value
+table(x, ...) <- value
 
-recursive(x) <- value
+recursive(x, ...) <- value
 
-vector(x) <- value
+vector(x, ...) <- value
 
-data.frame(x) <- value
+data.frame(x, ...) <- value
 
-null(x) <- value
+null(x, ...) <- value
 }
 \arguments{
 \item{x}{symbol}

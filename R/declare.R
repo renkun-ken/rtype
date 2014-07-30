@@ -6,14 +6,14 @@
 #' @examples
 #' declare(x,y=numeric(),z=integer())
 declare <- function(...,.envir=parent.frame()) {
-  dots <- eval(substitute(alist(...)))
-  argnames <-  if(is.null(names(dots))) "" else names(dots)
+  args <- dots(...)
+  argnames <-  if(is.null(names(args))) "" else names(args)
   Map(function(name,value) {
     if(nchar(name) == 0L) {
       assign(deparse(value), NULL, envir = .envir)
     } else {
       assign(name, eval(value, .envir), envir = .envir)
     }
-  },argnames,dots)
+  },argnames,args)
   invisible(NULL)
 }

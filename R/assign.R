@@ -11,156 +11,156 @@
 #' numeric(x) <- 10
 #' integer(x) <- 5L
 #' }
-`atomic<-` <- function(x, value) {
-  checkType(x, value, is.atomic, "atomic")
+`atomic<-` <- function(x, value, ...) {
+  check(x, value, is.atomic, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`integer<-` <- function(x, value) {
-  checkType(x, value, is.integer, "integer")
+`integer<-` <- function(x, value, ...) {
+  check(x, value, is.integer, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`numeric<-` <- function(x, value) {
-  checkType(x, value, is.numeric, "numeric")
+`numeric<-` <- function(x, value, ...) {
+  check(x, value, is.numeric, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`double<-` <- function(x, value) {
-  checkType(x, value, is.double, "double")
+`double<-` <- function(x, value, ...) {
+  check(x, value, is.double, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`logical<-` <- function(x, value) {
-  checkType(x, value, is.logical, "logical")
+`logical<-` <- function(x, value, ...) {
+  check(x, value, is.logical, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`character<-` <- function(x, value) {
-  checkType(x, value, is.character, "character")
+`character<-` <- function(x, value, ...) {
+  check(x, value, is.character, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`raw<-` <- function(x, value) {
-  checkType(x, value, is.raw, "raw")
+`raw<-` <- function(x, value, ...) {
+  check(x, value, is.raw, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`complex<-` <- function(x, value) {
-  checkType(x, value, is.complex, "complex")
+`complex<-` <- function(x, value, ...) {
+  check(x, value, is.complex, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`matrix<-` <- function(x, value) {
-  checkType(x, value, is.matrix, "matrix")
+`matrix<-` <- function(x, value, ...) {
+  check(x, value, is.matrix, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`array<-` <- function(x, value) {
-  checkType(x, value, is.array, "array")
+`array<-` <- function(x, value, ...) {
+  check(x, value, is.array, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`list<-` <- function(x, value) {
-  checkType(x, value, is.list, "list")
+`list<-` <- function(x, value, ...) {
+  check(x, value, is.list, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`pairlist<-` <- function(x, value) {
-  checkType(x, value, is.pairlist, "pairlist")
+`pairlist<-` <- function(x, value, ...) {
+  check(x, value, is.pairlist, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`envir<-` <- function(x, value) {
-  checkType(x, value, is.environment, "environment")
+`envir<-` <- function(x, value, ...) {
+  check(x, value, is.environment, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`name<-` <- function(x, value) {
-  checkType(x, value, is.name, "name")
+`name<-` <- function(x, value, ...) {
+  check(x, value, is.name, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`symbol<-` <- function(x, value) {
-  checkType(x, value, is.symbol, "symbol")
+`symbol<-` <- function(x, value, ...) {
+  check(x, value, is.symbol, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`call<-` <- function(x, value) {
-  checkType(x, value, is.call, "call")
+`call<-` <- function(x, value, ...) {
+  check(x, value, is.call, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`factor<-` <- function(x, value) {
-  checkType(x, value, is.factor, "factor")
+`factor<-` <- function(x, value, ...) {
+  check(x, value, is.factor, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`fun<-` <- function(x, value) {
-  checkType(x, value, is.function, "function")
+`fun<-` <- function(x, value, ...) {
+  check(x, value, is.function, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`expression<-` <- function(x, value) {
-  checkType(x, value, is.expression, "expression")
+`expression<-` <- function(x, value, ...) {
+  check(x, value, is.expression, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`language<-` <- function(x, value) {
-  checkType(x, value, is.language, "language")
+`language<-` <- function(x, value, ...) {
+  check(x, value, is.language, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`object<-` <- function(x, value) {
-  checkType(x, value, is.object, "object")
+`object<-` <- function(x, value, ...) {
+  check(x, value, is.object, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`table<-` <- function(x, value) {
-  checkType(x, value, is.table, "table")
+`table<-` <- function(x, value, ...) {
+  check(x, value, is.table, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`recursive<-` <- function(x, value) {
-  checkType(x, value, is.recursive, "recursive")
+`recursive<-` <- function(x, value, ...) {
+  check(x, value, is.recursive, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`vector<-` <- function(x, value) {
-  checkType(x, value, is.vector, "vector")
+`vector<-` <- function(x, value, ...) {
+  check(x, value, is.vector, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`data.frame<-` <- function(x, value) {
-  checkType(x, value, is.data.frame, "data.frame")
+`data.frame<-` <- function(x, value, ...) {
+  check(x, value, is.data.frame, ...)
 }
 
 #' @rdname typed-assign
 #' @export
-`null<-` <- function(x, value) {
-  checkType(x, value, is.null, "NULL")
+`null<-` <- function(x, value, ...) {
+  check(x, value, is.null, ...)
 }
