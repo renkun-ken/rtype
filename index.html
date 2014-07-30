@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>rtype by renkun-ken</title>
+    <meta name="description" content="rtype : A strong type system for R">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>rtype</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>rtype</h1>
-        <p>A strong type system for R</p>
 
-        <p class="view"><a href="https://github.com/renkun-ken/rtype">View the Project on GitHub <small>renkun-ken/rtype</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/renkun-ken/rtype">View on GitHub</a>
 
+          <h1 id="project_title">rtype</h1>
+          <h2 id="project_tagline">A strong type system for R</h2>
 
-        <ul>
-          <li><a href="https://github.com/renkun-ken/rtype/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/renkun-ken/rtype/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/renkun-ken/rtype">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/renkun-ken/rtype/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/renkun-ken/rtype/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
 <a name="rtype" class="anchor" href="#rtype"><span class="octicon octicon-link"></span></a>rtype</h1>
 
@@ -46,6 +49,9 @@
 <h2>
 <a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
+<h3>
+<a name="declaring-symbols" class="anchor" href="#declaring-symbols"><span class="octicon octicon-link"></span></a>Declaring symbols</h3>
+
 <p>Declare symbols Before using them.</p>
 
 <div class="highlight highlight-r"><pre>declare<span class="p">(</span>x<span class="p">,</span>y<span class="o">=</span><span class="kt">numeric</span><span class="p">(),</span>z<span class="o">=</span><span class="kt">logical</span><span class="p">())</span>
@@ -57,7 +63,8 @@ y :  num(0)
 z :  logi(0) 
 </code></pre>
 
-<p>Assign values with type checking</p>
+<h3>
+<a name="assignment-with-type-checking" class="anchor" href="#assignment-with-type-checking"><span class="octicon octicon-link"></span></a>Assignment with type checking</h3>
 
 <div class="highlight highlight-r"><pre><span class="c1"># NULL symbol can be assigned any value</span>
 <span class="kt">numeric</span><span class="p">(</span>x<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3.5</span><span class="p">)</span>
@@ -71,7 +78,7 @@ z :  logi(0)
 <span class="kt">integer</span><span class="p">(</span>y<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="m">2L</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>Error: Symbol is not integer
+<pre><code>Error: symbol fails type checking with .Primitive("is.integer")
 </code></pre>
 
 <div class="highlight highlight-r"><pre><span class="c1"># the assignment fails if the value does not pass type checking</span>
@@ -79,7 +86,33 @@ z :  logi(0)
 <span class="kt">logical</span><span class="p">(</span>z<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 
-<pre><code>Error: Value is not logical
+<pre><code>Error: value fails type checking with .Primitive("is.logical")
+</code></pre>
+
+<h3>
+<a name="assignment-with-condition-checking" class="anchor" href="#assignment-with-condition-checking"><span class="octicon octicon-link"></span></a>Assignment with condition checking</h3>
+
+<div class="highlight highlight-r"><pre><span class="c1"># assign value checking condition length = 3</span>
+<span class="kt">numeric</span><span class="p">(</span>x<span class="p">,</span> length <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># stop if condition is violated</span>
+<span class="kt">numeric</span><span class="p">(</span>x<span class="p">,</span> length <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>Error: value [length = 4L] violates condition [length = 3]
+</code></pre>
+
+<div class="highlight highlight-r"><pre><span class="c1"># assign value checking multiple conditions</span>
+declare<span class="p">(</span>df<span class="p">)</span>
+<span class="kt">data.frame</span><span class="p">(</span>df<span class="p">,</span> ncol<span class="o">=</span><span class="m">2</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span>y<span class="o">=</span><span class="kc">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+<span class="c1"># or equivalently</span>
+<span class="kt">data.frame</span><span class="p">(</span>df<span class="p">,</span> dim<span class="o">=</span><span class="kt">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">2</span><span class="p">))</span> <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span>y<span class="o">=</span><span class="kc">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+
+<span class="c1"># stop if any condition is violated</span>
+<span class="kt">data.frame</span><span class="p">(</span>df<span class="p">,</span> ncol<span class="o">=</span><span class="m">3</span><span class="p">,</span> nrow<span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">data.frame</span><span class="p">(</span>x<span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span>y<span class="o">=</span><span class="kc">letters</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">])</span>
+</pre></div>
+
+<pre><code>Error: value [ncol = 2L] violates condition [ncol = 3]
 </code></pre>
 
 <h2>
@@ -93,12 +126,16 @@ z :  logi(0)
 
 <p>This package is under <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/renkun-ken">renkun-ken</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">rtype maintained by <a href="https://github.com/renkun-ken">renkun-ken</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -109,6 +146,7 @@ z :  logi(0)
             pageTracker._trackPageview();
             } catch(err) {}
           </script>
+
 
   </body>
 </html>
