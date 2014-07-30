@@ -1,0 +1,4 @@
+Version 0.1 (2014-07-30)
+===
+Add `declare` function
+Add assignment functions with type checking
