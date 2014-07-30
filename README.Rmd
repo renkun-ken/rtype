@@ -1,4 +1,8 @@
-
+```{r knitsetup, echo=FALSE, results='hide', warning=FALSE, message=FALSE, cache=FALSE}
+library(knitr)
+opts_knit$set(base.dir='./', fig.path='', out.format='md')
+opts_chunk$set(prompt=FALSE, comment='', results='markup')
+```
 
 # rtype
 
@@ -18,22 +22,14 @@ devtools::install_github("rtype","renkun-ken")
 
 Declare symbols Before using them.
 
-
-```r
+```{r}
 declare(x,y=numeric(),z=logical())
 ls.str()
 ```
 
-```
-x :  NULL
-y :  num(0) 
-z :  logi(0) 
-```
-
 Assign values with type checking
 
-
-```r
+```{r}
 # NULL symbol can be assigned any value
 numeric(x) <- c(1,2,3.5)
 
@@ -44,20 +40,10 @@ numeric(y) <- c(1,2,3)
 # the symbol does not take value that violates its type checking
 # is.integer(y) = FALSE (violation)
 integer(y) <- c(1L,2L)
-```
 
-```
-Error: Symbol is not integer
-```
-
-```r
 # the assignment fails if the value does not pass type checking
 # is.logical(z) = TRUE, but is.logical(c(1,2,3)) = FALSE (violation)
 logical(z) <- c(1,2,3)
-```
-
-```
-Error: Value is not logical
 ```
 
 ## Help overview
