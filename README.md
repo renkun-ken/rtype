@@ -27,9 +27,6 @@ ls.str()
 ```
 
 ```
-df : 'data.frame':	10 obs. of  2 variables:
- $ x: int  1 2 3 4 5 6 7 8 9 10
- $ y: Factor w/ 10 levels "a","b","c","d",..: 1 2 3 4 5 6 7 8 9 10
 x :  NULL
 y :  num(0) 
 z :  logi(0) 
@@ -52,7 +49,7 @@ integer(y) <- c(1L,2L)
 ```
 
 ```
-Error: symbol fails type checking with type
+Error: symbol fails type checking with .Primitive("is.integer")
 ```
 
 ```r
@@ -62,7 +59,7 @@ logical(z) <- c(1,2,3)
 ```
 
 ```
-Error: value fails type checking with type
+Error: value fails type checking with .Primitive("is.logical")
 ```
 
 ### Assignment with condition checking

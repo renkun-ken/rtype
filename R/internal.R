@@ -8,7 +8,8 @@ dots <- function(...) {
 
 checktype <- function(x, type, obj) {
   if(!type(x))
-    stop(obj," fails type checking with ", deparse(substitute(type)))
+    stop(obj," fails type checking with ", deparse(type),
+      call. = FALSE)
   invisible(NULL)
 }
 
