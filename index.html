@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rtype by renkun-ken</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rtype</h1>
+        <p>A strong type system for R</p>
+
+        <p class="view"><a href="https://github.com/renkun-ken/rtype">View the Project on GitHub <small>renkun-ken/rtype</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/renkun-ken/rtype/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/renkun-ken/rtype/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/renkun-ken/rtype">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="rtype" class="anchor" href="#rtype"><span class="octicon octicon-link"></span></a>rtype</h1>
+
+<p><a href="https://travis-ci.org/renkun-ken/rtype"><img src="https://travis-ci.org/renkun-ken/rtype.png?branch=master" alt="Build Status"></a></p>
+
+<p>rtype is a strong type system for R which supports symbol declaration and assignment with type checking.</p>
+
+<p><a href="https://github.com/renkun-ken/rtype/releases">Release notes</a></p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-r"><pre>devtools<span class="o">::</span>install_github<span class="p">(</span><span class="s">"rtype"</span><span class="p">,</span><span class="s">"renkun-ken"</span><span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h2>
+
+<p>Declare symbols Before using them.</p>
+
+<div class="highlight highlight-r"><pre>declare<span class="p">(</span>x<span class="p">,</span>y<span class="o">=</span><span class="kt">numeric</span><span class="p">(),</span>z<span class="o">=</span><span class="kt">logical</span><span class="p">())</span>
+ls.str<span class="p">()</span>
+</pre></div>
+
+<pre><code>x :  NULL
+y :  num(0) 
+z :  logi(0) 
+</code></pre>
+
+<p>Assign values with type checking</p>
+
+<div class="highlight highlight-r"><pre><span class="c1"># NULL symbol can be assigned any value</span>
+<span class="kt">numeric</span><span class="p">(</span>x<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3.5</span><span class="p">)</span>
+
+<span class="c1"># numeric symbol can be assigned only numeric value</span>
+<span class="c1"># is.numeric(y) = TRUE, and is.numeric(c(1,2,3)) = TRUE</span>
+<span class="kt">numeric</span><span class="p">(</span>y<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># the symbol does not take value that violates its type checking</span>
+<span class="c1"># is.integer(y) = FALSE (violation)</span>
+<span class="kt">integer</span><span class="p">(</span>y<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1L</span><span class="p">,</span><span class="m">2L</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>Error: Symbol is not integer
+</code></pre>
+
+<div class="highlight highlight-r"><pre><span class="c1"># the assignment fails if the value does not pass type checking</span>
+<span class="c1"># is.logical(z) = TRUE, but is.logical(c(1,2,3)) = FALSE (violation)</span>
+<span class="kt">logical</span><span class="p">(</span>z<span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+
+<pre><code>Error: Value is not logical
+</code></pre>
+
+<h2>
+<a name="help-overview" class="anchor" href="#help-overview"><span class="octicon octicon-link"></span></a>Help overview</h2>
+
+<div class="highlight highlight-r"><pre>help<span class="p">(</span>package <span class="o">=</span> rtype<span class="p">)</span>
+</pre></div>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>This package is under <a href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/renkun-ken">renkun-ken</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-47159422-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
