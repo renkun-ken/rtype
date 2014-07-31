@@ -84,6 +84,14 @@ null(x, ...) <- value
 \arguments{
 \item{x}{symbol}
 
+\item{...}{additional conditions taking the following forms:
+
+    1. \code{fun = v}, i.e. \code{fun(x)} must be equal \code{v}.
+
+    2. \code{cond}, i.e. \code{cond(x)} must be \code{TRUE}.
+
+    3. a \code{function} like \code{function(x) mean(x) <= 5.0}}
+
 \item{value}{value to be assigned}
 }
 \description{
@@ -94,7 +102,10 @@ Assign with type checking
 x <- 10L
 atomic(x) <- 20
 numeric(x) <- 10
-integer(x) <- 5L
+numeric(x, length = 10L) <- 1:10
+
+cond1 <- function(x) mean(x) <= 5
+numeric(x, cond1) <- 0:9
 }
 }
 

@@ -6,6 +6,12 @@ dots <- function(...) {
   eval(substitute(alist(...)))
 }
 
+getnames <- function(x, default = character(sign(length(x)))) {
+  if(length(x) == 0L) character(0L)
+  else if(is.null(names(x))) character(1L)
+  else names(x)
+}
+
 checktype <- function(x, type, obj) {
   if(!type(x))
     stop(obj," fails type checking with ", deparse(type),
@@ -13,18 +19,29 @@ checktype <- function(x, type, obj) {
   invisible(NULL)
 }
 
-checkcond <- function(x, cond, obj, ...) {
+checkcond <- function(x, cond, obj, envir = parent.frame(), ...) {
   Map(function(name,value) {
-    actual <- do.call(name,list(x))
+    if(nchar(name) == 0L) {
+      name <- value
+      value <- TRUE
+    }
+    pcond <- is.logical(value)
+    actual <- do.call(name,list(x),envir = envir)
     valid <- equal(actual,value)
     if(!valid) {
-      stop(obj," [",
-        name," = ",deparse(actual,
-          width.cutoff = 20L,nlines = 1L, ...),"] violates condition [",
-        name," = ",deparse(value,
-          width.cutoff = 20L,nlines = 1L, ...),"]",call. = FALSE)
+      if(pcond) {
+        stop(obj, " violates condition [",deparse(name,...),"]",
+          call. = FALSE)
+      } else {
+        stop(obj," [",
+          name," = ",deparse(actual,
+            width.cutoff = 20L,nlines = 1L, ...),
+          "] violates condition [",
+          name," = ",deparse(value,
+            width.cutoff = 20L,nlines = 1L, ...),"]",call. = FALSE)
+      }
     }
-  },names(cond),cond)
+  },getnames(cond),cond)
   invisible(NULL)
 }
 
