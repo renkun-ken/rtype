@@ -58,7 +58,10 @@
 ls.str<span class="p">()</span>
 </pre></div>
 
-<pre><code>x :  NULL
+<pre><code>a :  int [1:10] 2 3 4 5 6 7 8 9 10 11
+b :  int 10
+cond1 : function (x)  
+x :  NULL
 y :  num(0) 
 z :  logi(0) 
 </code></pre>
@@ -92,6 +95,8 @@ z :  logi(0)
 <h3>
 <a name="assignment-with-condition-checking" class="anchor" href="#assignment-with-condition-checking"><span class="octicon octicon-link"></span></a>Assignment with condition checking</h3>
 
+<p>Checking single condition</p>
+
 <div class="highlight highlight-r"><pre><span class="c1"># assign value checking condition length = 3</span>
 <span class="kt">numeric</span><span class="p">(</span>x<span class="p">,</span> length <span class="o">=</span> <span class="m">3</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="kt">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
 
@@ -101,6 +106,8 @@ z :  logi(0)
 
 <pre><code>Error: value [length = 4L] violates condition [length = 3]
 </code></pre>
+
+<p>Checking multiple conditions</p>
 
 <div class="highlight highlight-r"><pre><span class="c1"># assign value checking multiple conditions</span>
 declare<span class="p">(</span>df<span class="p">)</span>
@@ -113,6 +120,18 @@ declare<span class="p">(</span>df<span class="p">)</span>
 </pre></div>
 
 <pre><code>Error: value [ncol = 2L] violates condition [ncol = 3]
+</code></pre>
+
+<p>Checking function conditions</p>
+
+<div class="highlight highlight-r"><pre><span class="c1"># checking function condition</span>
+declare<span class="p">(</span>x<span class="p">)</span>
+cond1 <span class="o">&lt;-</span> <span class="kr">function</span><span class="p">(</span>x<span class="p">)</span> <span class="kp">mean</span><span class="p">(</span>x<span class="p">)</span> <span class="o">&lt;=</span> <span class="m">5</span>
+<span class="kt">numeric</span><span class="p">(</span>x<span class="p">,</span> length <span class="o">=</span> <span class="m">10</span><span class="p">,</span> cond1<span class="p">)</span> <span class="o">&lt;-</span> <span class="m">0</span><span class="o">:</span><span class="m">9</span>
+<span class="kt">numeric</span><span class="p">(</span>x<span class="p">,</span> length <span class="o">=</span> <span class="m">10</span><span class="p">,</span> cond1<span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+</pre></div>
+
+<pre><code>Error: value violates condition [function (x) mean(x) &lt;= 5]
 </code></pre>
 
 <h2>
