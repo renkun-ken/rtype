@@ -50,13 +50,20 @@ logical(z) <- c(1,2,3)
 
 ### Assignment with condition checking
 
+Checking single condition
+
 ```{r}
 # assign value checking condition length = 3
 numeric(x, length = 3) <- c(1,2,3)
 
 # stop if condition is violated
 numeric(x, length = 3) <- c(1,2,3,4)
+```
 
+
+Checking multiple conditions
+
+```{r}
 # assign value checking multiple conditions
 declare(df)
 data.frame(df, ncol=2, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
@@ -65,10 +72,17 @@ data.frame(df, dim=c(10,2)) <- data.frame(x=1:10,y=letters[1:10])
 
 # stop if any condition is violated
 data.frame(df, ncol=3, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
-
-
 ```
 
+Checking function conditions
+
+```{r}
+# checking function condition
+declare(x)
+cond1 <- function(x) mean(x) <= 5
+numeric(x, length = 10, cond1) <- 0:9
+numeric(x, length = 10, cond1) <- 1:10
+```
 
 ## Help overview
 

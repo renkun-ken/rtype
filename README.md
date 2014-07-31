@@ -27,6 +27,9 @@ ls.str()
 ```
 
 ```
+a :  int [1:10] 2 3 4 5 6 7 8 9 10 11
+b :  int 10
+cond1 : function (x)  
 x :  NULL
 y :  num(0) 
 z :  logi(0) 
@@ -64,6 +67,8 @@ Error: value fails type checking with .Primitive("is.logical")
 
 ### Assignment with condition checking
 
+Checking single condition
+
 
 ```r
 # assign value checking condition length = 3
@@ -76,6 +81,10 @@ numeric(x, length = 3) <- c(1,2,3,4)
 ```
 Error: value [length = 4L] violates condition [length = 3]
 ```
+
+
+Checking multiple conditions
+
 
 ```r
 # assign value checking multiple conditions
@@ -92,6 +101,20 @@ data.frame(df, ncol=3, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
 Error: value [ncol = 2L] violates condition [ncol = 3]
 ```
 
+Checking function conditions
+
+
+```r
+# checking function condition
+declare(x)
+cond1 <- function(x) mean(x) <= 5
+numeric(x, length = 10, cond1) <- 0:9
+numeric(x, length = 10, cond1) <- 1:10
+```
+
+```
+Error: value violates condition [function (x) mean(x) <= 5]
+```
 
 ## Help overview
 
