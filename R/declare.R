@@ -9,10 +9,10 @@ declare <- function(...,.envir=parent.frame()) {
   args <- dots(...)
   Map(function(name,value) {
     if(nchar(name) == 0L) {
-      assign(deparse(value), NULL, envir = .envir)
-    } else {
-      assign(name, eval(value, .envir), envir = .envir)
+      name <- deparse(value)
+      value <- NULL
     }
+    assign(name, eval(value, .envir), envir = .envir)
   },getnames(args),args)
   invisible(NULL)
 }
