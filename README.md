@@ -22,14 +22,12 @@ Declare symbols Before using them.
 
 
 ```r
+library(rtype)
 declare(x,y=numeric(),z=logical())
 ls.str()
 ```
 
 ```
-a :  int [1:10] 2 3 4 5 6 7 8 9 10 11
-b :  int 10
-cond1 : function (x)  
 x :  NULL
 y :  num(0) 
 z :  logi(0) 

@@ -2,6 +2,7 @@
 library(knitr)
 opts_knit$set(base.dir='./', fig.path='', out.format='md')
 opts_chunk$set(prompt=FALSE, comment='', results='markup')
+rm(list = objects())
 ```
 
 # rtype
@@ -25,6 +26,7 @@ devtools::install_github("rtype","renkun-ken")
 Declare symbols Before using them.
 
 ```{r}
+library(rtype)
 declare(x,y=numeric(),z=logical())
 ls.str()
 ```
