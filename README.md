@@ -114,6 +114,19 @@ numeric(x, length = 10, cond1) <- 1:10
 Error: value violates condition [function (x) mean(x) <= 5]
 ```
 
+General checking
+
+
+```r
+declare(x)
+check(x, class="integer", length=10) <- 1:10
+check(x, class="numeric", length=10) <- 1:10
+```
+
+```
+Error: value [class = "integer"] violates condition [class = "numeric"]
+```
+
 ## Help overview
 
 ```r
