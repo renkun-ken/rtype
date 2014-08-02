@@ -131,6 +131,16 @@ cond1 <span class="o">&lt;-</span> <span class="kr">function</span><span class="
 <pre><code>Error: value violates condition [function (x) mean(x) &lt;= 5]
 </code></pre>
 
+<p>General checking</p>
+
+<div class="highlight highlight-r"><pre>declare<span class="p">(</span>x<span class="p">)</span>
+check<span class="p">(</span>x<span class="p">,</span> class<span class="o">=</span><span class="s">"integer"</span><span class="p">,</span> length<span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+check<span class="p">(</span>x<span class="p">,</span> class<span class="o">=</span><span class="s">"numeric"</span><span class="p">,</span> length<span class="o">=</span><span class="m">10</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span>
+</pre></div>
+
+<pre><code>Error: value [class = "integer"] violates condition [class = "numeric"]
+</code></pre>
+
 <h2>
 <a name="help-overview" class="anchor" href="#help-overview"><span class="octicon octicon-link"></span></a>Help overview</h2>
 
