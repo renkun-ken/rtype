@@ -15,11 +15,19 @@ rtype is a strong type system for R which supports symbol declaration and assign
 
 ## Installation
 
+You can install the latest released version from [CRAN](http://cran.r-project.org/web/packages/rtype/) with
+
+```r
+install.packages("rtype")
+```
+
+or the latest development version from GitHub with
+
 ```r
 devtools::install_github("rtype","renkun-ken")
 ```
 
-## Getting started
+## Examples
 
 ### Declaring symbols
 
