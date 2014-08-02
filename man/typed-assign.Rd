@@ -4,6 +4,7 @@
 \alias{atomic<-}
 \alias{call<-}
 \alias{character<-}
+\alias{check<-}
 \alias{complex<-}
 \alias{data.frame<-}
 \alias{double<-}
@@ -80,6 +81,8 @@ vector(x, ...) <- value
 data.frame(x, ...) <- value
 
 null(x, ...) <- value
+
+check(x, ...) <- value
 }
 \arguments{
 \item{x}{symbol}

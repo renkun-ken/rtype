@@ -47,9 +47,12 @@ checkcond <- function(x, cond, obj, envir = parent.frame(), ...) {
 
 check <- function(x, value, type, ...) {
   cond <- list(...)
-  if(!is.null(x))
-    checktype(x, type, "symbol")
-  checktype(value, type, "value")
+  if(!missing(type)) {
+    type <- match.fun(type)
+    if(!is.null(x))
+      checktype(x, type, "symbol")
+    checktype(value, type, "value")
+  }
   checkcond(value, cond, "value")
   value
 }

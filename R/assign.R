@@ -174,3 +174,9 @@
 `null<-` <- function(x, ..., value) {
   check(x, value, is.null, ...)
 }
+
+#' @rdname typed-assign
+#' @export
+`check<-` <- function(x, ..., value) {
+  check(x, value, type = , ...)
+}
