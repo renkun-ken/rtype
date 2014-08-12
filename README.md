@@ -96,6 +96,7 @@ Checking multiple conditions
 # assign value checking multiple conditions
 declare(df)
 data.frame(df, ncol=2, nrow=10) <- data.frame(x=1:10,y=letters[1:10])
+
 # or equivalently
 data.frame(df, dim=c(10,2)) <- data.frame(x=1:10,y=letters[1:10])
 
