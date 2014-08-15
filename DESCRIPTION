@@ -1,7 +1,7 @@
 Package: rtype
 Type: Package
 Title: A strong type system for R
-Version: 0.1
+Version: 0.1-1
 Author: Kun Ren <ken@renkun.me>
 Maintainer: Kun Ren <ken@renkun.me>
 Description: A strong type system for R which supports
