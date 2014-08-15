@@ -2,14 +2,14 @@ Package: rtype
 Type: Package
 Title: A strong type system for R
 Version: 0.1
-Author: Kun Ren <renkun@outlook.com>
-Maintainer: Kun Ren <renkun@outlook.com>
+Author: Kun Ren <ken@renkun.me>
+Maintainer: Kun Ren <ken@renkun.me>
 Description: A strong type system for R which supports
     symbol declaration and assignment with type checking
     and condition checking.
 Depends:
     R (>= 2.15)
-Date: 2014-08-02
+Date: 2014-08-15
 Suggests:
     testthat,
     knitr
